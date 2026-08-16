@@ -1,0 +1,73 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // =============================================
+    // Nur authentifizierte Nutzer haben Zugriff
+    // =============================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // =============================================
+    // Allgemeine Storage-Regeln
+    // =============================================
+    match /{allPaths=**} {
+
+      // Lesen: Alle authentifizierten Nutzer können Dateien lesen
+      allow read: if isAuthenticated();
+
+      // Schreiben/Löschen: Nur authentifizierte Nutzer
+      allow write: if isAuthenticated()
+        // Maximale Dateigröße: 5 MB (5 * 1024 * 1024 Bytes)
+        && request.resource.size < 5 * 1024 * 1024
+        // Erlaubte Bildformate
+        && request.resource.contentType.matches('image/png')
+        || request.resource.contentType.matches('image/jpg')
+        || request.resource.contentType.matches('image/jpeg')
+        || request.resource.contentType.matches('image/webp');
+
+      allow delete: if isAuthenticated();
+    }
+
+    // =============================================
+    // Benutzerspezifische Uploads
+    // user_uploads/{userId}/{fileName}
+    // =============================================
+    match /user_uploads/{userId}/{fileName} {
+
+      // Nur der jeweilige Benutzer kann in seinen Ordner schreiben
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated()
+        && request.auth.uid == userId
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/png')
+        || request.resource.contentType.matches('image/jpg')
+        || request.resource.contentType.matches('image/jpeg')
+        || request.resource.contentType.matches('image/webp');
+      allow delete: if isAuthenticated()
+        && request.auth.uid == userId;
+    }
+
+    // =============================================
+    // Admin-Uploads (Restaurant-Bilder, etc.)
+    // admin/{restaurantId}/{fileName}
+    // =============================================
+    match /admin/{restaurantId}/{fileName} {
+
+      function isAdmin() {
+        return isAuthenticated()
+          && firestore.exists(/databases/(default)/documents/users/$(request.auth.uid))
+          && get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+      }
+
+      allow read: if isAuthenticated();
+      allow write, delete: if isAdmin()
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/png')
+        || request.resource.contentType.matches('image/jpg')
+        || request.resource.contentType.matches('image/jpeg')
+        || request.resource.contentType.matches('image/webp');
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "packageName": "com.mualimx.tawali_app",
+  "title": {
+    "default": "Tawali: طوالي - Essen bestellen in Khartoum",
+    "de_DE": "Tawali: طوالي - Essen bestellen in Khartoum",
+    "ar": "طوالي - طلب طعام سوداني",
+    "en_US": "Tawali - Sudanese Food Delivery"
+  },
+  "shortDescription": {
+    "default": "Essen bestellen in Khartoum – schnell, einfach, zuverlässig",
+    "de_DE": "Essen bestellen in Khartoum – schnell, einfach, zuverlässig",
+    "ar": "اطلب الطعام من مطاعم الخرطوم – سريع، سهل، موثوق",
+    "en_US": "Order food from Khartoum's best restaurants – fast, easy, reliable"
+  },
+  "fullDescription": {
+    "de_DE": "Tawali (طوالي) – Die erste umfassende Food-Delivery-App für Khartoum, Sudan.\n\nEntdecke die Vielfalt der sudanesischen Küche und internationale Gerichte – bequem von zu Hause oder im Büro bestellt. Egal ob du Lust auf traditionelles Kisra, saftiges Shawarma, frische Falafel oder äthiopische Injera hast – Tawali bringt sie zu dir.\n\n🚀 Features\n\n• 🏪 Restaurants in deiner Nähe – Entdecke lokale Restaurants und Imbisse in Khartoum, Omdurman und Bahri\n• 🔍 Intelligente Suche – Finde Gerichte nach Name, Kategorie oder Restaurant\n• 📋 Detaillierte Speisekarten – Durchstöbere Menüs mit Preisen, Beschreibungen und Bildern\n• 🛒 Einfacher Bestellvorgang – Lege Artikel in den Warenkorb und bestelle in Sekunden\n• 📍 Live-Bestellverfolgung – Verfolge deine Bestellung in Echtzeit vom Restaurant bis zu deiner Haustür\n• ⭐ Bewertungen & Rezensionen – Hilf anderen mit deinen Bewertungen und lies Erfahrungsberichte\n• 🔐 Sichere Anmeldung per Telefon – Einfach und sicher per SMS-Code anmelden\n• 💬 Push-Benachrichtigungen – Erhalte Updates zum Bestellstatus\n• 💳 Mehrere Zahlungsmethoden – Barzahlung, Karte oder Mobile Money\n• 🌙 Arabische Sprachunterstützung – Vollständig auf Arabisch (RTL) nutzbar\n\n🇸🇩 Warum Tawali?\n\nTawali ist speziell für den sudanesischen Markt entwickelt. Wir verstehen die lokalen Vorlieben, die Bedeutung der sudanesischen Esskultur und die Herausforderungen der Lieferlogistik in Khartoum. Unsere App ist schnell, zuverlässig und auf die Bedürfnisse unserer Nutzer zugeschnitten.\n\n🔒 Deine Privatsphäre\n\nTawali folgt einem \"Zero-Data\"-Ansatz. Wir erheben nur die Daten, die für den Betrieb der App notwendig sind. Keine Werbe-Tracker, keine Datenweitergabe an Dritte.\n\n📞 Support\n\nBei Fragen oder Problemen: mail2mualimx@gmail.com\n\n📱 Kompatibilität\n\nErfordert Android 5.0 (API 21) oder höher.",
+    "ar": "طوالي – أول تطبيق شامل لتوصيل الطعام في الخرطوم، السودان.\n\nاكتشف تنوع المطبخ السوداني والأطباق العالمية – اطلب براحة من منزلك أو مكتبك. سواء كنت تشتهي كسرة تقليدية، شاورما لذيذة، فلافل طازجة أو إنجيرا إثيوبية – طوالي يجلبها إليك.\n\n🚀 المميزات\n\n• 🏪 المطاعم القريبة منك – اكتشف المطاعم والمقاهي المحلية في الخرطوم وأم درمان وبحري\n• 🔍 بحث ذكي – ابحث عن الأطباق بالاسم، التصنيف أو المطعم\n• 📋 قوائم طعام مفصلة – تصفح القوائم مع الأسعار والوصف والصور\n• 🛒 طلب سهل – أضف العناصر إلى سلة التسوق واطلب في ثوانٍ\n• 📍 تتبع الطلب المباشر – تتبع طلبك في الوقت الفعلي من المطعم إلى باب منزلك\n• ⭐ التقييمات والمراجعات – ساعد الآخرين بتقييماتك واقرأ تجاربهم\n• 🔐 تسجيل دخول آمن بالهاتف – تسجيل سهل وآمن عبر رمز SMS\n• 💬 إشعارات فورية – احصل على تحديثات حول حالة طلبك\n• 💳 طرق دفع متعددة – الدفع نقداً، بالبطاقة أو عبر المحفظة الإلكترونية\n• 🌙 دعم اللغة العربية – استخدم التطبيق بالكامل بالعربية (من اليمين إلى اليسار)\n\n🇸🇩 لماذا طوالي؟\n\nطوالي مصمم خصيصاً للسوق السوداني. نحن نفهم التفضيلات المحلية، أهمية الثقافة الغذائية السودانية، وتحديات لوجستيات التوصيل في الخرطوم. تطبيقنا سريع وموثوق ومصمم ليلبي احتياجات مستخدمينا.\n\n🔒 خصوصيتك\n\nيتبع طوالي مبدأ \"صفر بيانات\". نحن نجمع فقط البيانات الضرورية لتشغيل التطبيق. لا توجد أدوات تتبع إعلانية، ولا مشاركة للبيانات مع أطراف ثالثة.\n\n📞 الدعم الفني\n\nللأسئلة أو المشاكل: mail2mualimx@gmail.com\n\n📱 التوافق\n\nيتطلب Android 5.0 (API 21) أو أحدث.",
+    "en_US": "Tawali (طوالي) – The first comprehensive food delivery app for Khartoum, Sudan.\n\nDiscover the richness of Sudanese cuisine and international dishes – order from the comfort of your home or office. Whether you're craving traditional Kisra, juicy Shawarma, fresh Falafel, or Ethiopian Injera – Tawali brings it to your doorstep.\n\n🚀 Features\n\n• 🏪 Nearby Restaurants – Discover local restaurants and eateries in Khartoum, Omdurman, and Bahri\n• 🔍 Smart Search – Find dishes by name, category, or restaurant\n• 📋 Detailed Menus – Browse menus with prices, descriptions, and photos\n• 🛒 Easy Ordering – Add items to cart and order in seconds\n• 📍 Live Order Tracking – Track your order in real-time from restaurant to door\n• ⭐ Reviews & Ratings – Help others with your reviews and read experiences\n• 🔐 Secure Phone Login – Easy and secure login via SMS code\n• 💬 Push Notifications – Get updates on your order status\n• 💳 Multiple Payment Methods – Cash, card, or mobile money\n• 🌙 Arabic Language Support – Fully usable in Arabic (RTL)\n\n🇸🇩 Why Tawali?\n\nTawali is purpose-built for the Sudanese market. We understand local preferences, the importance of Sudanese food culture, and the challenges of delivery logistics in Khartoum. Our app is fast, reliable, and tailored to our users' needs.\n\n🔒 Your Privacy\n\nTawali follows a \"Zero Data\" approach. We only collect data necessary for the app's operation. No ad trackers, no third-party data sharing.\n\n📞 Support\n\nQuestions or issues: mail2mualimx@gmail.com\n\n📱 Compatibility\n\nRequires Android 5.0 (API 21) or higher."
+  },
+  "category": "FOOD_AND_DRINK",
+  "contentRating": "EVERYONE",
+  "price": "FREE",
+  "countries": [
+    "SD",
+    "US",
+    "GB",
+    "DE",
+    "AT",
+    "CH",
+    "SA",
+    "AE",
+    "QA",
+    "KW",
+    "BH",
+    "OM",
+    "EG",
+    "JO",
+    "LB",
+    "TN",
+    "DZ",
+    "MA",
+    "LY"
+  ],
+  "contactEmail": "mail2mualimx@gmail.com",
+  "contactWebsite": "https://github.com/Mualimx-Agent/tawali",
+  "contactPhone": "",
+  "defaultLanguage": "de_DE",
+  "languages": [
+    "de_DE",
+    "ar",
+    "en_US"
+  ],
+  "graphics": {
+    "icon": {
+      "path": "play_store/assets/icon-512x512.png",
+      "size": "512x512"
+    },
+    "featureGraphic": {
+      "path": "play_store/assets/feature-graphic-1024x500.png",
+      "size": "1024x500"
+    },
+    "phoneScreenshots": [
+      {
+        "path": "play_store/assets/screenshot-home.png",
+        "size": "1080x1920",
+        "language": "de_DE"
+      },
+      {
+        "path": "play_store/assets/screenshot-restaurant.png",
+        "size": "1080x1920",
+        "language": "de_DE"
+      },
+      {
+        "path": "play_store/assets/screenshot-cart.png",
+        "size": "1080x1920",
+        "language": "de_DE"
+      },
+      {
+        "path": "play_store/assets/screenshot-tracking.png",
+        "size": "1080x1920",
+        "language": "de_DE"
+      },
+      {
+        "path": "play_store/assets/screenshot-reviews.png",
+        "size": "1080x1920",
+        "language": "de_DE"
+      }
+    ]
+  },
+  "releaseNotes": {
+    "de_DE": "Erste Version von Tawali (طوالي):\n• Restaurants in Khartoum entdecken\n• Speisekarten durchstöbern\n• Bestellungen aufgeben und verfolgen\n• Bewertungen schreiben\n• Arabische & deutsche Sprachunterstützung\n• Sicheres Login per Telefonnummer",
+    "ar": "الإصدار الأول من طوالي:\n• اكتشف المطاعم في الخرطوم\n• تصفح قوائم الطعام\n• أطلب وتتبع طلبك\n• اكتب تقييمات\n• دعم اللغة العربية والألمانية\n• تسجيل دخول آمن برقم الهاتف",
+    "en_US": "First release of Tawali (طوالي):\n• Discover restaurants in Khartoum\n• Browse menus\n• Place and track orders\n• Write reviews\n• Arabic & German language support\n• Secure phone number login"
+  },
+  "testing": {
+    "openTesting": false,
+    "closedTesting": false,
+    "internalTesting": true
+  },
+  "tags": [
+    "food",
+    "delivery",
+    "sudan",
+    "khartoum",
+    "restaurant",
+    "takeout",
+    "ordering",
+    "arabic",
+    "sudanese",
+    "food delivery"
+  ]
+}

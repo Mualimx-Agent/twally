@@ -1,0 +1,200 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =============================================
+    // Helper-Funktionen
+    // =============================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // =============================================
+    // users
+    // =============================================
+    match /users/{userId} {
+
+      // Nur der Besitzer kann seine eigenen Daten lesen/schreiben
+      // Admin kann alle lesen/schreiben
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId);
+      allow delete: if isAdmin();
+
+      // Validierung bei create/update
+      allow write: if request.resource.data.keys().hasAll(['name', 'phone', 'createdAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 2
+        && request.resource.data.name.size() <= 100
+        && request.resource.data.phone is string
+        && request.resource.data.phone.size() >= 7
+        && request.resource.data.phone.size() <= 20
+        && request.resource.data.createdAt is timestamp;
+    }
+
+    // =============================================
+    // restaurants
+    // =============================================
+    match /restaurants/{restaurantId} {
+
+      // Alle können lesen
+      allow read: if true;
+
+      // Nur Admin kann schreiben/aktualisieren/löschen
+      allow create, update, delete: if isAdmin();
+
+      // Validierung bei create/update
+      allow write: if request.resource.data.keys().hasAll(['name', 'nameAr', 'description', 'descriptionAr', 'category', 'phone', 'address', 'imageUrl', 'rating', 'deliveryFee', 'deliveryTime', 'isOpen', 'createdAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 2
+        && request.resource.data.nameAr is string
+        && request.resource.data.description is string
+        && request.resource.data.descriptionAr is string
+        && request.resource.data.category is string
+        && request.resource.data.phone is string
+        && request.resource.data.address is string
+        && request.resource.data.imageUrl is string
+        && request.resource.data.rating is number
+        && request.resource.data.rating >= 0
+        && request.resource.data.rating <= 5
+        && request.resource.data.deliveryFee is number
+        && request.resource.data.deliveryFee >= 0
+        && request.resource.data.deliveryTime is number
+        && request.resource.data.deliveryTime >= 0
+        && request.resource.data.isOpen is bool
+        && request.resource.data.createdAt is timestamp;
+    }
+
+    // =============================================
+    // menu_items
+    // =============================================
+    match /menu_items/{itemId} {
+
+      // Alle können lesen
+      allow read: if true;
+
+      // Nur Admin kann schreiben
+      allow create, update, delete: if isAdmin();
+
+      // Validierung bei create/update
+      allow write: if request.resource.data.keys().hasAll(['restaurantId', 'name', 'nameAr', 'description', 'descriptionAr', 'category', 'price', 'imageUrl', 'isAvailable', 'createdAt'])
+        && request.resource.data.restaurantId is string
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 1
+        && request.resource.data.nameAr is string
+        && request.resource.data.description is string
+        && request.resource.data.descriptionAr is string
+        && request.resource.data.category is string
+        && request.resource.data.price is number
+        && request.resource.data.price > 0
+        && request.resource.data.imageUrl is string
+        && request.resource.data.isAvailable is bool
+        && request.resource.data.createdAt is timestamp;
+    }
+
+    // =============================================
+    // orders
+    // =============================================
+    match /orders/{orderId} {
+
+      // Nur der Besitzer oder Admin kann lesen
+      allow read: if isOwner(resource.data.userId) || isAdmin();
+
+      // Nur der Besitzer kann erstellen
+      allow create: if isOwner(request.resource.data.userId);
+
+      // Nur Admin kann Status aktualisieren
+      allow update: if isAdmin();
+
+      // Nur Admin kann löschen
+      allow delete: if isAdmin();
+
+      // Validierung bei create
+      allow create: if request.resource.data.keys().hasAll(['userId', 'restaurantId', 'items', 'totalAmount', 'deliveryAddress', 'deliveryFee', 'status', 'paymentMethod', 'createdAt'])
+        && request.resource.data.userId is string
+        && request.resource.data.restaurantId is string
+        && request.resource.data.items is list
+        && request.resource.data.items.size() > 0
+        && request.resource.data.totalAmount is number
+        && request.resource.data.totalAmount >= 0
+        && request.resource.data.deliveryAddress is string
+        && request.resource.data.deliveryFee is number
+        && request.resource.data.deliveryFee >= 0
+        && request.resource.data.status in ['pending', 'confirmed', 'preparing', 'delivering', 'delivered', 'cancelled']
+        && request.resource.data.paymentMethod in ['cash', 'card', 'mobile_money']
+        && request.resource.data.createdAt is timestamp;
+    }
+
+    // =============================================
+    // reviews
+    // =============================================
+    match /reviews/{reviewId} {
+
+      // Alle können lesen
+      allow read: if true;
+
+      // Authentifizierte Nutzer können eigene Bewertungen erstellen
+      allow create: if isAuthenticated()
+        && isOwner(request.resource.data.userId);
+
+      // Nur der Besitzer oder Admin kann aktualisieren/löschen
+      allow update, delete: if isOwner(resource.data.userId) || isAdmin();
+
+      // Validierung bei create/update
+      allow write: if request.resource.data.keys().hasAll(['userId', 'restaurantId', 'rating', 'comment', 'createdAt'])
+        && request.resource.data.userId is string
+        && request.resource.data.restaurantId is string
+        && request.resource.data.rating is number
+        && request.resource.data.rating >= 1
+        && request.resource.data.rating <= 5
+        && request.resource.data.comment is string
+        && request.resource.data.comment.size() <= 500
+        && request.resource.data.createdAt is timestamp;
+    }
+
+    // =============================================
+    // promo_codes
+    // =============================================
+    match /promo_codes/{codeId} {
+
+      // Nur Admin kann lesen/schreiben/löschen
+      allow read, write, delete: if isAdmin();
+
+      // Validierung bei create/update
+      allow write: if request.resource.data.keys().hasAll(['code', 'discountType', 'discountValue', 'minOrderAmount', 'maxUses', 'currentUses', 'startDate', 'endDate', 'isActive', 'createdAt'])
+        && request.resource.data.code is string
+        && request.resource.data.code.size() >= 3
+        && request.resource.data.discountType in ['percentage', 'fixed']
+        && request.resource.data.discountValue is number
+        && request.resource.data.discountValue > 0
+        && request.resource.data.minOrderAmount is number
+        && request.resource.data.minOrderAmount >= 0
+        && request.resource.data.maxUses is number
+        && request.resource.data.maxUses >= 0
+        && request.resource.data.currentUses is number
+        && request.resource.data.currentUses >= 0
+        && request.resource.data.startDate is timestamp
+        && request.resource.data.endDate is timestamp
+        && request.resource.data.endDate > request.resource.data.startDate
+        && request.resource.data.isActive is bool
+        && request.resource.data.createdAt is timestamp;
+    }
+
+    // =============================================
+    // Standard: Kein Zugriff
+    // =============================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

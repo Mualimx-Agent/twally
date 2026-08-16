@@ -1,0 +1,123 @@
+name: Build AAB – Tawali (طوالي)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      build_name:
+        description: 'Build name (e.g., 1.0.0)'
+        required: false
+        default: '1.0.0'
+      build_number:
+        description: 'Build number (integer)'
+        required: false
+        default: '1'
+
+env:
+  FLUTTER_VERSION: '3.44.2'
+  JAVA_VERSION: '17'
+  BUILD_NAME: ${{ github.event.inputs.build_name || '1.0.0' }}
+  BUILD_NUMBER: ${{ github.event.inputs.build_number || github.run_number }}
+
+jobs:
+  build:
+    name: Build AAB
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Set up Java 17
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+
+      # 3. Set up Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: 'stable'
+          cache: true
+
+      # 4. Verify Flutter installation
+      - name: Verify Flutter
+        run: |
+          flutter --version
+          dart --version
+
+      # 5. Decode google-services.json from secrets
+      - name: Decode google-services.json
+        working-directory: app/twally_app
+        run: |
+          echo "${{ secrets.GOOGLE_SERVICES_JSON }}" | base64 -d > android/app/google-services.json
+          echo "google-services.json decoded successfully"
+
+      # 6. Decode keystore from secrets
+      - name: Decode Keystore
+        working-directory: app/twally_app
+        run: |
+          echo "${{ secrets.KEYSTORE_JKS }}" | base64 -d > android/app/upload-keystore.jks
+          echo "Keystore decoded successfully"
+
+      # 7. Create key.properties
+      - name: Create key.properties
+        working-directory: app/twally_app/android
+        run: |
+          cat > key.properties << EOF
+          storePassword=${{ secrets.STORE_PASSWORD }}
+          keyPassword=${{ secrets.KEY_PASSWORD }}
+          keyAlias=${{ secrets.KEY_ALIAS }}
+          storeFile=upload-keystore.jks
+          EOF
+          echo "key.properties created"
+
+      # 8. Install Flutter dependencies
+      - name: Flutter pub get
+        working-directory: app/twally_app
+        run: flutter pub get
+
+      # 9. Run Flutter analyze
+      - name: Flutter analyze
+        working-directory: app/twally_app
+        run: flutter analyze
+
+      # 10. Run Flutter tests
+      - name: Flutter test
+        working-directory: app/twally_app
+        run: flutter test
+
+      # 11. Build AAB (Android App Bundle)
+      - name: Build AAB
+        working-directory: app/twally_app
+        run: |
+          flutter build appbundle --release \
+            --build-name=${{ env.BUILD_NAME }} \
+            --build-number=${{ env.BUILD_NUMBER }}
+
+      # 12. List build output
+      - name: List build output
+        run: |
+          ls -lh app/twally_app/build/app/outputs/bundle/release/
+
+      # 13. Upload AAB as artifact
+      - name: Upload AAB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tawali-${{ env.BUILD_NAME }}-b${{ env.BUILD_NUMBER }}.aab
+          path: app/twally_app/build/app/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
+          retention-days: 30
+
+      # 14. Notify on success
+      - name: Notify success
+        run: |
+          echo "✅ Tawali AAB built successfully!"
+          echo "   Version: ${{ env.BUILD_NAME }} (build ${{ env.BUILD_NUMBER }})"
+          echo "   Artifact: tawali-${{ env.BUILD_NAME }}-b${{ env.BUILD_NUMBER }}.aab"
