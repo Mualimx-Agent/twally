@@ -15,9 +15,9 @@
 # =============================================================================
 # Firebase
 # =============================================================================
-**/google-services.json
+# GoogleService files tracked for CI/CD builds
 **/GoogleService-Info.plist
-**/firebase_options.dart
+# Firebase config files removed from gitignore for CI/CD builds
 **/*.firebaserc
 **/firebase.json
 **/.firebase/

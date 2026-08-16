@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'theme/app_theme.dart';
 import 'router/app_router.dart';
 import 'providers/auth_provider.dart';
@@ -9,13 +11,9 @@ import 'providers/cart_provider.dart';
 import 'providers/order_provider.dart';
 import 'providers/locale_provider.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // TODO: Firebase initialisieren, sobald firebase_options.dart vorhanden ist:
-  //   import 'firebase_options.dart';
-  //   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const TawaliApp());
 }
 
