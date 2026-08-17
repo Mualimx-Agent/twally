@@ -57,7 +57,6 @@ class OrdersListScreen extends StatefulWidget {
 }
 
 class _OrdersListScreenState extends State<OrdersListScreen> {
-  bool _isLoading = false;
 
   /// Sample orders for UI demonstration
   final List<OrderModel> _orders = [

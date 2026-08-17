@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/constants/app_constants.dart';
+
 import '../../core/constants/app_strings.dart';
 import '../../theme/app_colors.dart';
 

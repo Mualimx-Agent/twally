@@ -58,7 +58,6 @@ class OrderHistoryScreen extends StatefulWidget {
 
 class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
   String _selectedFilter = 'all'; // all | completed | cancelled
-  bool _isLoading = false;
 
   final List<OrderModel> _allOrders = [
     OrderModel(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/constants/app_strings.dart';
-import '../../core/constants/app_constants.dart';
+
 import '../../theme/app_colors.dart';
 
 /// Order status timeline steps
