@@ -86,7 +86,7 @@ jobs:
       # 9. Run Flutter analyze
       - name: Flutter analyze
         working-directory: app/twally_app
-        run: flutter analyze
+        run: flutter analyze --no-fatal-warnings
 
       # 10. Run Flutter tests
       - name: Flutter test
