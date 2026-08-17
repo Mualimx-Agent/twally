@@ -52,21 +52,14 @@ jobs:
           flutter --version
           dart --version
 
-      # 5. Decode google-services.json from secrets
-      - name: Decode google-services.json
-        working-directory: app/twally_app
-        run: |
-          echo "${{ secrets.GOOGLE_SERVICES_JSON }}" | base64 -d > android/app/google-services.json
-          echo "google-services.json decoded successfully"
-
-      # 6. Decode keystore from secrets
+      # 5. Decode keystore from secrets
       - name: Decode Keystore
         working-directory: app/twally_app
         run: |
           echo "${{ secrets.KEYSTORE_JKS }}" | base64 -d > android/app/upload-keystore.jks
           echo "Keystore decoded successfully"
 
-      # 7. Create key.properties
+      # 6. Create key.properties
       - name: Create key.properties
         working-directory: app/twally_app/android
         run: |
