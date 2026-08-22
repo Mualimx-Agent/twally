@@ -27,3 +27,17 @@ Die Aufnahmen zeigen die **Demo-Daten** aus `RestaurantProvider._initDemoData()`
 keine Fotos. Solange die App keine echten Daten und keinen Bestell-Backend hat,
 sind diese Bilder fuer eine Veroeffentlichung nicht geeignet -- nicht weil sie
 unecht waeren, sondern weil die App dahinter noch nichts tut.
+
+## Masse (korrigiert am 22.08.2026)
+
+Aufgenommen mit **360x800 logischen Pixeln** (echte Telefonmasse) und beim
+Aufnehmen per `clip.scale = 3` auf **1080x2400 Bildpunkte** hochskaliert.
+
+Der naheliegende Weg -- `deviceScaleFactor: 3` in
+`Emulation.setDeviceMetricsOverride` -- funktioniert **nicht**: Flutter-Web
+uebernimmt den Wert nicht und rendert unskaliert in die linke obere Ecke,
+sodass die App nur ein Neuntel des Bildes einnimmt. Werkzeug: `~/shoot2.py`.
+
+Zweite Falle: Flutter registriert einen **Service Worker**. Wird auf demselben
+Port eine andere App ausgeliefert, zeigt der Browser weiter die alte aus dem
+Cache. Pro App einen eigenen Port und ein frisches Browserprofil verwenden.
