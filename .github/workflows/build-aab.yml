@@ -25,6 +25,8 @@ jobs:
   build:
     name: Build AAB
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       # 1. Checkout repository
@@ -102,6 +104,7 @@ jobs:
 
       # 13. Upload AAB as artifact
       - name: Upload AAB artifact
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: tawali-${{ env.BUILD_NAME }}-b${{ env.BUILD_NUMBER }}.aab
@@ -109,6 +112,19 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
+
+      # Release-Assets zaehlen nicht gegen das Actions-Speicherkontingent.
+      # Deshalb liegt hier die verlaessliche Kopie des AAB.
+      - name: AAB als Release veroeffentlichen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="build-${{ github.run_number }}"
+          gh release create "$tag" \
+            "app/twally_app/build/app/outputs/bundle/release/app-release.aab#twally-build${{ github.run_number }}.aab" \
+            --title "Tawali Build ${{ github.run_number }}" \
+            --notes "Automatischer Build aus ${{ github.sha }}" \
+            --latest
       # 14. Notify on success
       - name: Notify success
         run: |
