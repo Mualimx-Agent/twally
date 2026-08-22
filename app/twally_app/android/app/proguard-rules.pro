@@ -16,3 +16,11 @@
 -keepclassmembers class * {
   @com.google.gson.annotations.SerializedName <fields>;
 }
+
+# Flutter verweist auf Play Core (Deferred Components), bindet die Bibliothek
+# aber nicht ein. Ohne diese Regel bricht R8 ab:
+#   Missing class com.google.android.play.core.splitinstall.SplitInstallException
+# Tawali nutzt keine Deferred Components, deshalb genuegt -dontwarn.
+-dontwarn com.google.android.play.core.**
+-keep class com.google.android.play.core.** { *; }
+-keep class io.flutter.embedding.engine.deferredcomponents.** { *; }
