@@ -107,7 +107,7 @@ jobs:
           name: tawali-${{ env.BUILD_NAME }}-b${{ env.BUILD_NUMBER }}.aab
           path: app/twally_app/build/app/outputs/bundle/release/app-release.aab
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 7
 
       # 14. Notify on success
       - name: Notify success
