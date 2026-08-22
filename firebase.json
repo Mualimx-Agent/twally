@@ -1,0 +1,6 @@
+{
+  "firestore": {
+    "rules": "docs/firestore.rules"
+  },
+  "project": "tawali-2ded4"
+}
