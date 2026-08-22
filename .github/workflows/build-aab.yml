@@ -56,14 +56,14 @@ jobs:
 
       # 5. Decode keystore from secrets
       - name: Decode Keystore
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
         run: |
           echo "${{ secrets.KEYSTORE_JKS }}" | base64 -d > android/app/upload-keystore.jks
           echo "Keystore decoded successfully"
 
       # 6. Create key.properties
       - name: Create key.properties
-        working-directory: app/twally_app/android
+        working-directory: app/tawali_app/android
         run: |
           cat > key.properties << EOF
           storePassword=${{ secrets.STORE_PASSWORD }}
@@ -75,23 +75,23 @@ jobs:
 
       # 8. Install Flutter dependencies
       - name: Flutter pub get
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
         run: flutter pub get
 
       # 9. Run Flutter analyze
       - name: Flutter analyze
         continue-on-error: true
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
         run: flutter analyze
 
       # 10. Run Flutter tests
       - name: Flutter test
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
         run: flutter test
 
       # 11. Build AAB (Android App Bundle)
       - name: Build AAB
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
         run: |
           flutter build appbundle --release \
             --build-name=${{ env.BUILD_NAME }} \
@@ -100,7 +100,7 @@ jobs:
       # 12. List build output
       - name: List build output
         run: |
-          ls -lh app/twally_app/build/app/outputs/bundle/release/
+          ls -lh app/tawali_app/build/app/outputs/bundle/release/
 
       # 13. Upload AAB as artifact
       - name: Upload AAB artifact
@@ -108,7 +108,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tawali-${{ env.BUILD_NAME }}-b${{ env.BUILD_NUMBER }}.aab
-          path: app/twally_app/build/app/outputs/bundle/release/app-release.aab
+          path: app/tawali_app/build/app/outputs/bundle/release/app-release.aab
           if-no-files-found: error
           retention-days: 7
 
@@ -121,7 +121,7 @@ jobs:
         run: |
           tag="build-${{ github.run_number }}"
           gh release create "$tag" \
-            "app/twally_app/build/app/outputs/bundle/release/app-release.aab#twally-build${{ github.run_number }}.aab" \
+            "app/tawali_app/build/app/outputs/bundle/release/app-release.aab#tawali-build${{ github.run_number }}.aab" \
             --title "Tawali Build ${{ github.run_number }}" \
             --notes "Automatischer Build aus ${{ github.sha }}" \
             --latest

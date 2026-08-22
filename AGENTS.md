@@ -27,11 +27,11 @@ Location: `~/.hermes/profiles/tawali-dev/`
 
 ### Environment
 
-The workspace is at `/home/ubuntu/apps/twally/` with the Flutter app at `app/twally_app/`.
+The workspace is at `/home/ubuntu/apps/tawali/` with the Flutter app at `app/tawali_app/`.
 
 ```bash
 # Current project state
-~/apps/twally/
+~/apps/tawali/
 ├── README.md
 ├── INSTALL.md
 ├── ARCHITECTURE.md
@@ -43,7 +43,7 @@ The workspace is at `/home/ubuntu/apps/twally/` with the Flutter app at `app/twa
 ├── HALAL-CHECKLIST.md
 ├── AGENTS.md
 └── app/
-    └── twally_app/  (Flutter project)
+    └── tawali_app/  (Flutter project)
 ```
 
 ---
@@ -57,7 +57,7 @@ The workspace is at `/home/ubuntu/apps/twally/` with the Flutter app at `app/twa
 hermes start --profile tawali-dev
 
 # Agent loads project context
-cd ~/apps/twally/app/twally_app
+cd ~/apps/tawali/app/tawali_app
 
 # Agent checks git status
 git status
@@ -117,7 +117,7 @@ Hermes Agent will:
 
 ```bash
 # Hermes Agent runs these automatically:
-cd ~/apps/twally/app/twally_app
+cd ~/apps/tawali/app/tawali_app
 
 # Analyze
 flutter analyze

@@ -16,7 +16,7 @@ firebase login
 
 ### 1.1 Initialize Firebase Project
 ```bash
-cd app/twally_app
+cd app/tawali_app
 
 # Initialize Firebase (if not done already)
 firebase init
@@ -239,13 +239,13 @@ jobs:
           channel: 'stable'
       - name: Install dependencies
         run: flutter pub get
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
       - name: Analyze
         run: flutter analyze
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
       - name: Run tests
         run: flutter test
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
 
   build-android:
     name: Build Android
@@ -260,23 +260,23 @@ jobs:
           channel: 'stable'
       - name: Install dependencies
         run: flutter pub get
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
       - name: Build APK
         run: flutter build apk --release
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
       - name: Build App Bundle
         run: flutter build appbundle --release
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
-          path: app/twally_app/build/app/outputs/flutter-apk/*.apk
+          path: app/tawali_app/build/app/outputs/flutter-apk/*.apk
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
         with:
           name: release-aab
-          path: app/twally_app/build/app/outputs/bundle/release/*.aab
+          path: app/tawali_app/build/app/outputs/bundle/release/*.aab
 
   deploy-firebase:
     name: Deploy Firebase Rules & Indexes
@@ -292,13 +292,13 @@ jobs:
         run: npm install -g firebase-tools
       - name: Deploy Firestore Rules
         run: firebase deploy --only firestore:rules --token "${{ secrets.FIREBASE_TOKEN }}"
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
       - name: Deploy Storage Rules
         run: firebase deploy --only storage:rules --token "${{ secrets.FIREBASE_TOKEN }}"
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
       - name: Deploy Firestore Indexes
         run: firebase deploy --only firestore:indexes --token "${{ secrets.FIREBASE_TOKEN }}"
-        working-directory: app/twally_app
+        working-directory: app/tawali_app
 ```
 
 ### 3.2 GitHub Secrets Setup

@@ -2,7 +2,7 @@
 
 **Tawali (طوالي)** is a modern food delivery platform built for Sudan. Order from Khartoum's best restaurants with a fully Arabic (RTL) interface.
 
-![Tawali App](app/twally_app/assets/feature_graphic.png)
+![Tawali App](app/tawali_app/assets/feature_graphic.png)
 
 > **Developer:** Mualimx Apps — mail2mualimx@gmail.com
 > **Platform:** Android · iOS · Web
@@ -98,11 +98,11 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/mualimx/twally.git
-cd twally
+git clone https://github.com/Mualimx-Agent/tawali.git
+cd tawali
 
 # 2. Navigate to the Flutter app
-cd app/twally_app
+cd app/tawali_app
 
 # 3. Get dependencies
 flutter pub get
@@ -120,8 +120,8 @@ Follow these steps to connect Firebase:
 1. **Create a Firebase project** at [firebase.google.com](https://firebase.google.com)
 2. **Register your app** (Android/iOS) in the Firebase Console
 3. **Download config files:**
-   - Android: `google-services.json` → `app/twally_app/android/app/`
-   - iOS: `GoogleService-Info.plist` → `app/twally_app/ios/`
+   - Android: `google-services.json` → `app/tawali_app/android/app/`
+   - iOS: `GoogleService-Info.plist` → `app/tawali_app/ios/`
 4. **Run FlutterFire CLI:**
    ```bash
    dart pub global activate flutterfire_cli

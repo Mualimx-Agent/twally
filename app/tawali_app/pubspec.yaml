@@ -1,4 +1,4 @@
-name: twally_app
+name: tawali_app
 description: "Tawali (طوالي) – Food delivery app for Sudan. Order from Khartoum's best restaurants."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.

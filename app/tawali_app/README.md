@@ -1,4 +1,4 @@
-# twally_app
+# tawali_app
 
 A new Flutter project.
 

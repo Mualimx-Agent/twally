@@ -77,11 +77,11 @@ firebase deploy --only storage:rules
 ## 6. google-services.json einbinden
 
 ```bash
-# Die heruntergeladene Datei nach ~/apps/twally/app/twally_app/ kopieren:
-cp ~/Downloads/google-services.json ~/apps/twally/app/twally_app/
+# Die heruntergeladene Datei nach ~/apps/tawali/app/tawali_app/ kopieren:
+cp ~/Downloads/google-services.json ~/apps/tawali/app/tawali_app/
 
 # Prüfen, ob die Datei existiert:
-ls -la ~/apps/twally/app/twally_app/google-services.json
+ls -la ~/apps/tawali/app/tawali_app/google-services.json
 ```
 
 **Wichtig:** `google-services.json` darf NIE in ein öffentliches Git-Repository gelangen.  
@@ -92,7 +92,7 @@ Sie ist bereits in `.gitignore` aufgenommen.
 ## 7. FlutterFire konfigurieren
 
 ```bash
-cd ~/apps/twally/app/twally_app
+cd ~/apps/tawali/app/tawali_app
 
 # FlutterFire CLI installieren (falls nicht vorhanden):
 dart pub global activate flutterfire_cli

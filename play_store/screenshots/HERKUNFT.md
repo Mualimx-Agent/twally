@@ -9,7 +9,7 @@ Android-App. Kein Bild ist gezeichnet, nichts ist nachtraeglich hineinretuschier
 
 Werkzeug: `~/shoot.py`. Wiederholbar mit:
 
-    cd ~/apps/twally/app/twally_app
+    cd ~/apps/tawali/app/tawali_app
     ~/flutter/bin/flutter build web --release --no-tree-shake-icons \
       --dart-define=FLUTTER_WEB_CANVASKIT_FORCE_CPU_ONLY=true
     cd build/web && python3 -m http.server 8899 &

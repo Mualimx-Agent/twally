@@ -20,8 +20,8 @@ By participating, you agree to maintain a **respectful and inclusive** environme
 
 ### 1. Fork & Clone
 ```bash
-git clone https://github.com/your-username/twally.git
-cd twally/app/twally_app
+git clone https://github.com/your-username/tawali.git
+cd tawali/app/tawali_app
 flutter pub get
 ```
 
@@ -157,7 +157,7 @@ Fixes #[issue_number]
 - Update string translations
 
 ### Feature Requests
-See the [Issues](https://github.com/mualimx/twally/issues) tab for open feature requests.
+See the [Issues](https://github.com/Mualimx-Agent/tawali/issues) tab for open feature requests.
 
 ---
 
@@ -237,7 +237,7 @@ open coverage/html/index.html  # macOS
 ## Project Structure
 
 ```
-twally/
+tawali/
 ├── README.md
 ├── INSTALL.md
 ├── ARCHITECTURE.md
@@ -252,7 +252,7 @@ twally/
 │   └── workflows/
 │       └── deploy.yml
 └── app/
-    └── twally_app/
+    └── tawali_app/
         ├── lib/
         │   ├── main.dart
         │   ├── core/
@@ -274,7 +274,7 @@ twally/
 ## Questions?
 
 - **Email:** mail2mualimx@gmail.com
-- **Issues:** [GitHub Issues](https://github.com/mualimx/twally/issues)
+- **Issues:** [GitHub Issues](https://github.com/Mualimx-Agent/tawali/issues)
 
 ---
 
