@@ -1,4 +1,4 @@
-package com.mualimx.twally_app
+package com.mualimx.tawali
 
 import io.flutter.embedding.android.FlutterActivity
 

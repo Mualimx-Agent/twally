@@ -34,7 +34,7 @@ cd twally/app/twally_app
 
 ### 2.2 Register Android App
 1. In Firebase Console → Project Settings → **Add app** → **Android**
-2. Android package name: `com.mualimx.twally_app`
+2. Android package name: `com.mualimx.tawali`
 3. App nickname: `Tawali (طوالي)`
 4. Download `google-services.json`
 

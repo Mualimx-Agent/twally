@@ -2,7 +2,7 @@
 
 > **Version:** 1.0.0  
 > **Project ID:** `tawali-xxxxx` (wird bei Erstellung vergeben)  
-> **Android Package:** `com.mualimx.tawali_app`  
+> **Android Package:** `com.mualimx.tawali`  
 > **Region:** `europe-west1`  
 > **Kontakt:** mail2mualimx@gmail.com
 
@@ -66,7 +66,7 @@ firebase deploy --only storage:rules
 ## 5. Android App registrieren
 
 1. Im Firebase Console: **Projektübersicht → Android-Symbol hinzufügen**
-2. **Android-Paketname:** `com.mualimx.tawali_app`
+2. **Android-Paketname:** `com.mualimx.tawali`
 3. **App-Nickname (optional):** `Tawali Android`
 4. **Debug-Signing-Zertifikat SHA-256:** (aus Schritt 3)
 5. **"App registrieren"** klicken

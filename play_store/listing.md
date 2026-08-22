@@ -1,6 +1,6 @@
 # Tawali (طوالي) – Google Play Store Listing
 
-> **Package:** com.mualimx.tawali_app  
+> **Package:** com.mualimx.tawali  
 > **Category:** FOOD_AND_DRINK  
 > **Content Rating:** EVERYONE  
 > **Price:** FREE  

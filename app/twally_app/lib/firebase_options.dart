@@ -62,7 +62,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '945949606458',
     projectId: 'tawali-2ded4',
     storageBucket: 'tawali-2ded4.firebasestorage.app',
-    iosBundleId: 'com.mualimx.twally_app',
+    iosBundleId: 'com.mualimx.tawali',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -71,7 +71,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '945949606458',
     projectId: 'tawali-2ded4',
     storageBucket: 'tawali-2ded4.firebasestorage.app',
-    iosBundleId: 'com.mualimx.twally_app',
+    iosBundleId: 'com.mualimx.tawali',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
